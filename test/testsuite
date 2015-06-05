@@ -1,0 +1,102 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+use lib qw( . .. );
+use TestSuite;
+
+my $execname = $0;
+$execname =~ s/^.*\///;
+
+my $USAGE = "
+  Usage: 
+
+    $execname run test...
+    Runs the specified tests, writing their results to the output directory.
+    If a golden directory exists for the tests, the results are compared
+    against the golden results and the differences are reported.
+
+    $execname diff test...
+    Only calculates diffs between current output directory and golden 
+    directory. This is useful if you are trying to manually update the
+    golden files to match the new output.
+
+    $execname model test...
+    Uses specified test results to create models in the golden directory.
+    If a test already has results in the golden directory, then it is skipped.
+    All files in the test output directory are copied into the golden 
+    directory (except system files).
+
+    $execname update test...
+    For each specified test, copies existing results into the golden directory
+    to be the new model results. Only files that already exist in the golden
+    directory are copied.
+
+    $execname desc[ribe] test...
+    For each specified test, prints out the description that is contained
+    within the header comments of the file in the command directory.
+
+    $execname save
+    Saves previous results to a timestamped directory.
+
+";
+
+if (@ARGV < 1)
+{
+    die $USAGE;
+}
+
+
+my $action = shift @ARGV;
+
+if ($action eq "save")
+{
+    TestSuite::save();
+}
+elsif ($action =~ m/run|model|update|desc|describe|diff/)
+{
+    my @tests = @ARGV;
+    
+    TestSuite::init();
+    @tests = TestSuite::expandTestList(@tests);
+    
+    if (not @tests)
+    {
+      TestSuite::printMsg("ERROR: No tests specified after expansion");
+      exit(1);
+    }
+
+    my $ret = 0;
+
+    if ($action eq "run")
+    {
+      $ret = TestSuite::run(@tests);
+      TestSuite::printSummary();
+    }
+    elsif ($action eq "diff")
+    {
+      $ret = TestSuite::diff(@tests);
+      TestSuite::printSummary();
+    }
+    elsif ($action eq "model")
+    {
+      $ret = TestSuite::model(@tests);    
+    }
+    elsif ($action eq "update")
+    {
+      $ret = TestSuite::update(@tests);    
+    }
+    elsif ($action =~ m/desc/)
+    {
+      $ret = TestSuite::describe(@tests);    
+    }
+    
+    TestSuite::finish();
+
+    exit $ret;
+}
+else 
+{
+  TestSuite::printMsg("ERROR: Invalid action '$action'");
+  exit(1);
+}

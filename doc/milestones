@@ -1,0 +1,67 @@
+
+------------------------------------------------------------------------
+Milestone 1: Basic Charting
+------------------------------------------------------------------------
+
+    o   View chart of any stock
+
+    o   Charts display price information, zoom, and resize
+
+    o   Data acquisition complete; data is downloaded automatically and
+        cached in database
+
+
+------------------------------------------------------------------------
+Milestone 2: Technical Analysis
+------------------------------------------------------------------------
+
+    o   Technical analysis library complete
+
+    o   Charting can display selected technical analyses and buy/sell
+        signals
+
+
+------------------------------------------------------------------------
+Milestone 3: Training and Evaluation of Prediction Profiles
+------------------------------------------------------------------------
+
+    o   Neural network implementation complete
+
+    o   Neural networks persisted in database
+
+    o   Trainer interface complete, including ability to select
+        technical analyses
+
+    o   Evaluator interface complete, including additional charting
+        capabilities
+
+
+------------------------------------------------------------------------
+Milestone 4: Prediction Profile Searching
+------------------------------------------------------------------------
+
+    o   User can search through security listings based on prediction
+        profiles.
+
+    o   Includes interface for tabulating and browsing search results
+
+
+------------------------------------------------------------------------
+Milestone 5: Portfolio management
+------------------------------------------------------------------------
+
+    o   Data management system can keep track of security purchases and
+        sales
+
+    o   Evaluate actual trades with optimal strategies based on
+        individual securities or indices
+
+
+------------------------------------------------------------------------
+Milestone 6: Temporal Difference Trading Bots
+------------------------------------------------------------------------
+
+    o   Use temporal difference learning to create a trading bot that
+        can automatically decide when to buy and sell
+
+    o   Ability to evaluate trading bots against real data

@@ -1,0 +1,1 @@
+alchemygendata --start 2003-08-01 --end 2004-01-01 --symbol amd --train train.dat --test test.dat --days 2 --percent 80 --sample 50 --randomize --seed 70

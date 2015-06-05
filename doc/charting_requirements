@@ -1,0 +1,114 @@
+------------------------------------------------------------------------
+Requirements for Chart
+------------------------------------------------------------------------
+
+A single chart is a graphical widget consisting of two axes, an optional
+legend, and any number of graphical elements (ChartElems). For example,
+the charts you see on Yahoo are two separate charts stacked on top of
+each other, one for price and one for volume. Charts can have the
+following UI actions applied:
+
+Resize: The chart is redrawn at a different pixel resolution but
+maintains the same data ranges. The data shown is thus identical,
+although the X/Y aspect ratio may change, along with the axes value
+labels
+
+Zoom: The X and/or Y data ranges are modified and the chart is redrawn
+to reflect these new data ranges. The data shown is not identical, and
+the axes value labels may differ because of the new data ranges. The
+overal chart size and aspect ratio remains identical.
+
+Elements: ChartElems can be added to or subtraced from the chart, 
+requiring the chart to be redrawn with the same size and zoom. The
+legend will need to be updated where applicable.
+
+
+------------------------------------------------------------------------
+Requirements for ChartElem
+------------------------------------------------------------------------
+
+The term "ChartElem" is chosen to reflect the generic nature of what can
+be placed in the chart. The Chart is a container of ChartElems, each of
+which have a graphical representation and are placed in a particular
+place within the X/Y axes. Within the chart there must be methods to
+add, remove, and list the ChartElems.
+
+The ChartElems may be a data series that extends the length of the
+chart, or a single point within the chart (such as a buy or sell
+signal). The ChartElems all have some basic data members, including
+colors, line/point/fill styles, legend flag, and labels. The following
+ChartElems will be supported:
+
+    o   Feature: A feature is a ChartElem that occurs at a discreet
+        moment in time. It is plotted as a single graphical element,
+        such as a square, arrow, or stop sign.
+
+    o   BasicPlot: A basic plot is a connected series of temporally
+        ordered X/Y pairs, typically used to represent stock prices over
+        a series of time.
+
+    o   CandlePlot: The candlestick plot is shown as a series of
+        discreet time points. Each time point (X value) has four
+        associated Y values: open, close, min, max.
+
+    o   BarChart: The bar chart consists of a series of buckets. Each
+        bucket occurs over a specific range on the X axis and reaches a
+        value on the Y axis. These would typically be used to represent
+        trading volume data.
+
+    o   BandedPlot: This is similar to the BasicPlot, but also includes
+        two bands that are plotted alongside the BasicPlot. These bands
+        may have a different line style. Their relative location may be
+        specified absolutely (Y value is given) or relatively (Y value
+        is a percentage of the Y value in the BasicPlot). For example,
+        the BandedPlot can be used for Bollinger Bands.
+
+
+------------------------------------------------------------------------
+Requirements for Chart Axes
+------------------------------------------------------------------------
+
+The Chart Axes have the following components:
+
+    o   Label: The common name for the axis
+
+    o   Units: The name and format representation of the units (such as
+        "$" or "000"). This may be represented as an enumeration to
+        support custom formatting.
+
+    o   Scale: Logarithmic or Linear
+
+    o   Numeric labels: Numeric labels that define the major gridlines
+        within the chart. These labels should be chosen automatically
+        based on reasonable values and round numbers.
+
+
+------------------------------------------------------------------------
+Requirements for Chart Legend
+------------------------------------------------------------------------
+
+The legend displays one entry for each ChartElem that has its "legend"
+flag turned on. For each such ChartElem, the legend contains a graphical
+depiction of that ChartElem (such as a red dashed line, or a green flag)
+and a common name for that ChartElem (such as SUNW or "Sell Signal").
+
+
+------------------------------------------------------------------------
+Open Issues
+------------------------------------------------------------------------
+
+    o   Does the chart contain *all* data that can be plotted, or only
+        what is currently visible? In other words, if the user zooms out
+        does the chart need to load (or be fed) additional data? My
+        preference would be to limit the chart to only plot the data
+        that is available. That way we could take the hit and pre-load
+        it with lots of data if we want, or we could limit it to a
+        particular time range and the chart simply won't zoom out
+        farther than that. The UI could also intercept these zoom-out
+        calls and supply additional data.
+
+    o   Where is the mapping being done between the date/time
+        representation and the actual plotted points? My vision was
+        initially that these BasicPlot datasets would include actual
+        dates/times, and it was the Chart's responsibility to map that
+        into the visible date range.

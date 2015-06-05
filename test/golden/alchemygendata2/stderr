@@ -1,0 +1,31 @@
+[05/08 15:34:47] Info: Using debug level 1
+[05/08 15:34:47] Info: User directory: /home/chuck/.alchemy
+[05/08 15:34:47] Info: Data directory: /home/chuck/.alchemy/data
+[05/08 15:34:47] Info: Preference file: /home/chuck/.alchemy/pref.dat
+[05/08 15:34:47] Info: Symbol file: /home/chuck/.alchemy/symbols.dat
+[05/08 15:34:47] Debug: Using random number generator seed: 70
+[05/08 15:34:47] Info: Running application logic
+[05/08 15:34:47] Info: Symbol: amd
+[05/08 15:34:47] Info: Training output file: train.dat
+[05/08 15:34:47] Info: Testing output file: test.dat
+[05/08 15:34:47] Info: Days in advance: 2
+[05/08 15:34:47] Info: Training data ratio: 0.8
+[05/08 15:34:47] Info: Data sampling ratio: 0.5
+[05/08 15:34:47] Info: Retrieving data for range: (2003-Aug-01 13:00:00 - 2004-Jan-01 13:00:00)
+[05/08 15:34:47] Debug: Attempting to retrieve data for amd over date range (2003-Aug-01 13:00:00 - 2004-Jan-01 13:00:00)
+[05/08 15:34:47] Debug: File retrieval caused stop with SUCCESS for amd
+[05/08 15:34:47] Debug: Retrieved 105 data records
+[05/08 15:34:47] Debug: Data points 0 to 2 are price history
+[05/08 15:34:47] Debug: Data points 3 to 6 are 4-day MA
+[05/08 15:34:47] Debug: Data points 7 to 10 are 2-day MA
+[05/08 15:34:47] Debug: Data points 11 to 14 are RSI
+[05/08 15:34:47] Debug: Data points 15 to 18 are PSAR
+[05/08 15:34:47] Debug: Neural network dataset has 34 data points
+[05/08 15:34:47] Debug: Each datapoint has 19 input(s) and 1 output(s)
+[05/08 15:34:47] Info: Randomizing dataset for 340 steps
+[05/08 15:34:47] Info: Total number of points: 34
+[05/08 15:34:47] Info: Number of points saved: 20 (59%)
+[05/08 15:34:47] Info: Number of train points: 17 (85%)
+[05/08 15:34:47] Info: Number of test points:  3 (15%)
+[05/08 15:34:47] Info: Finalizing application
+[05/08 15:34:47] Info: Total elapsed time: 00:00:00

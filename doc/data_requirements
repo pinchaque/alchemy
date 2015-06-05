@@ -1,0 +1,49 @@
+------------------------------------------------------------------------
+Requirements for Data Access
+------------------------------------------------------------------------
+
+We need an interface (virtual base) class that defines a method to
+retrieve data. Something like:
+
+  bool retrieve(const char* symbol,
+                const boost::time& start,
+                const boost::time& end,
+                RangeData& data, // output
+                Context* ctx = 0);
+
+This interface can then be implemented in two different ways:
+
+    o   Filesystem: Method will be able to read this data from a file on
+        disk. This will be helpful for unit testing and simple
+        debugging.
+
+    o   Database: Method will be able to retrieve information from a
+        relational database. If data is not available in the database,
+        it will be automatically retrieved and loaded into the database.
+        The data is effectively cached, and access will be quicker in
+        the future.
+
+
+In order to know which data is available, additional methods will need
+to be available. In another application I saw, the symbols are organized
+into exchanges. So we would need one method to get a list of exchanges,
+and a second to get a list of symbols available in a particular
+exchange.
+
+
+------------------------------------------------------------------------
+Requirements for Data Loading
+------------------------------------------------------------------------
+
+We will need an interface that specifies what data is loaded into the
+database. This will typically be called by the database implementation
+of retrieve() when the data is not available. However, we eventually may
+want to expose this method to the application. Let's say the user wants
+to pre-load the database of all data just for efficiency.
+
+I envision that creating the data files on the filesystem can be done
+with a perl script for debugging purposes. I could imagine that we would
+want more formal objects doing this work if we were to build in some
+type of exporters for stock data. I don't think we have a requirement
+for this now.
+

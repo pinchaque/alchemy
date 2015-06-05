@@ -1,0 +1,15 @@
+[05/08 15:36:25] Info: Using debug level 1
+[05/08 15:36:25] Info: User directory: /home/chuck/.alchemy
+[05/08 15:36:25] Info: Data directory: /home/chuck/.alchemy/data
+[05/08 15:36:25] Info: Preference file: /home/chuck/.alchemy/pref.dat
+[05/08 15:36:25] Info: Symbol file: /home/chuck/.alchemy/symbols.dat
+[05/08 15:36:25] Debug: Using random number generator seed: 80
+[05/08 15:36:25] Info: Running application logic
+[05/08 15:36:25] Info: Training input file: data/amd/train.dat
+[05/08 15:36:25] Info: Profile file: myProfile
+[05/08 15:36:25] Info: Hidden layers: 2
+[05/08 15:36:25] Info: Number of units: 20
+[05/08 15:36:25] Info: Read 61 data points from file 'data/amd/train.dat'
+[05/08 15:36:25] Info: Profile 'myProfile' does not exist; creating
+[05/08 15:36:25] Info: Finalizing application
+[05/08 15:36:25] Info: Total elapsed time: 00:00:00

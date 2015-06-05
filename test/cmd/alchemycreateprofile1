@@ -1,0 +1,2 @@
+# Basic test of alchemycreateprofile
+alchemycreateprofile --name profileName --profile myProfile --train data/amd/train.dat --layers 2 --units 20 --days 10 --seed 80

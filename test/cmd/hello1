@@ -1,0 +1,7 @@
+#!/bin/sh
+# This is a simple test of the test suite.
+
+fname=hello.out
+
+echo "Hello world to STDOUT!"
+echo "Hello world to $fname!" > $fname
